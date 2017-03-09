@@ -10,3 +10,5 @@ news
 pkgdown.css
 pkgdown.js
 reference
+^.*\.Rproj$
+^\.Rproj\.user$

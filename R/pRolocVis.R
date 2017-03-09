@@ -85,7 +85,6 @@ pRolocVis <- function(object, app = "main", fcol, ...) {
   }
   res <- NULL
   
-  app <- match.arg(app, c("main", "compare", "classify", "aggregate"))
   if (inherits(object, "MSnSetList"))
     app <- "compare"
   if (missing(fcol) && app != "classify")

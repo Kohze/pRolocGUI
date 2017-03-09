@@ -79,12 +79,15 @@
 ##'             groupBy = "Protein.Group.Accessions")                    
 ##' }
 pRolocVis <- function(object, app = "main", fcol, ...) {
+  if (app != "main" && app != "compare" && app != "classify" && app != "aggregate") {
+    options(error = NULL)
+    stop("input of 'app' must be either 'main','compare','classify' or 'aggregate'", call. = FALSE)
+  }
   res <- NULL
+  
   app <- match.arg(app, c("main", "compare", "classify", "aggregate"))
   if (inherits(object, "MSnSetList"))
     app <- "compare"
-  if (missing(app))
-    app <- "main"
   if (missing(fcol) && app != "classify")
     fcol <- "markers"
   if (app == "main")

@@ -199,7 +199,10 @@ pRolocVis_pca <- function(object,
                             min = 0,  max = 1, value = 0.5),
                 checkboxInput("checkbox", label = "Show labels", value = TRUE),
                 br(),
-                actionButton("resetButton", "Zoom/reset plot"),
+                checkboxGroupInput("selTab", 
+                                   "Data columns to display",
+                                   choices = origFvarLab,
+                                   selected = selDT),
                 br(),
                 actionButton("clear", "Clear selection"),
                 width = 2),
@@ -236,16 +239,7 @@ pRolocVis_pca <- function(object,
                                                 offset = 1)
                                      )
                                      ),
-                            tabPanel("Table Selection", id = "tableSelPanel",
-                                     fluidRow(
-                                         column(4,
-                                                checkboxGroupInput("selTab", 
-                                                                   "Data columns to display",
-                                                                   choices = origFvarLab,
-                                                                   selected = selDT)
-                                                )
-                                     )
-                                     ),
+                           
                             ## feature data table is always visible
                             fluidRow(
                                 column(12,
